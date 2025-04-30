@@ -1,0 +1,1 @@
+savedcmd_/home/azureuser/Linux_Kernel_Driver/1_CharacterDriver/my_char_driver.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/azureuser/Linux_Kernel_Driver/1_CharacterDriver/my_char_driver.ko /home/azureuser/Linux_Kernel_Driver/1_CharacterDriver/my_char_driver.o /home/azureuser/Linux_Kernel_Driver/1_CharacterDriver/my_char_driver.mod.o

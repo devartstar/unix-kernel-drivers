@@ -1,0 +1,1 @@
+savedcmd_/home/azureuser/Linux_Kernel_Driver/3_Ioctls/ioctl_driver_kernelspace.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/azureuser/Linux_Kernel_Driver/3_Ioctls/ioctl_driver_kernelspace.ko /home/azureuser/Linux_Kernel_Driver/3_Ioctls/ioctl_driver_kernelspace.o /home/azureuser/Linux_Kernel_Driver/3_Ioctls/ioctl_driver_kernelspace.mod.o

@@ -1,0 +1,1 @@
+savedcmd_/home/azureuser/Linux_Kernel_Driver/3_Ioctls/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/azureuser/Linux_Kernel_Driver/3_Ioctls/Module.symvers -T /home/azureuser/Linux_Kernel_Driver/3_Ioctls/modules.order -i Module.symvers -e 

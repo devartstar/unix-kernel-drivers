@@ -1,0 +1,1 @@
+savedcmd_/home/azureuser/Linux_Kernel_Development/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/azureuser/Linux_Kernel_Development/Module.symvers -T /home/azureuser/Linux_Kernel_Development/modules.order -i Module.symvers -e 
