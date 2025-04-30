@@ -2,13 +2,16 @@
 #include <linux/module.h>
 #include <linux/fs.h>
 #include <linux/uaccess.h>
+#include <linux/cdev.h>
 
 #define DEVICE_NAME "driver0"
-#define MAJOR_NUM 240
 
 #define IOCTL_RESET_COUNTER _IO('q', 1)
 
 static int counter = 100;
+
+static dev_t dev_num;
+static struct cdev *my_cdev = NULL;
 
 // FILE OPERTIONS
 
@@ -49,20 +52,42 @@ static struct file_operations fops = {
 
 static int __init simple_ioctl_init(void)
 {
-	int ret = register_chrdev(MAJOR_NUM, DEVICE_NAME, &fops);
+	int ret;
+	
+	// Get the major and minor number for the character device automatically
+	ret = alloc_chrdev_region(&dev_num, 0, 1, DEVICE_NAME);
 	if(ret < 0)
 	{
 		printk(KERN_ERR "Failed to register character device\n");
 		return ret;
 	}
+	
+	// Create and initialize the character device
+	my_cdev = cdev_alloc();
+	if(!my_cdev)
+	{
+		unregister_chrdev_region(dev_num, 1);
+		printk(KERN_ERR "Failed to allocate memory to cdev\n");
+		return -ENOMEM;
+	}
 
-	printk(KERN_INFO "Simple IOCTL driver loaded\n");
+	my_cdev->ops = &fops;
+	ret = cdev_add(my_cdev, dev_num, 1);
+	if(ret < 0)
+	{
+		unregister_chrdev_region(dev_num, 1);
+		printk(KERN_ERR "Failed to add cdev to the system\n");
+		return ret;
+	}
+
+	printk(KERN_INFO "Simple IOCTL driver loaded with major number %d\n", MAJOR(dev_num));
 	return 0;
 }
 
 static void __exit simple_ioctl_exit(void)
 {
-	unregister_chrdev(MAJOR_NUM, DEVICE_NAME);
+	cdev_del(my_cdev);
+	unregister_chrdev_region(dev_num, 1);
 	printk(KERN_INFO "Simple IOCTL driver unloaded\n");
 }
 

@@ -1,0 +1,31 @@
+();
+      |         ^~~~~~~
+      |         my_chdev
+/home/azureuser/Linux_Kernel_Driver/4_ioctl_char/ioctl_char_driver_ks.c:66:9: note: each undeclared identifier is reported only once for each function it appears in
+/home/azureuser/Linux_Kernel_Driver/4_ioctl_char/ioctl_char_driver_ks.c:99:60: error: unterminated argument list invoking macro "printk"
+   99 | MODULE_DESCRIPTION("Simple character ioctl device driver");
+      |                                                            ^
+/home/azureuser/Linux_Kernel_Driver/4_ioctl_char/ioctl_char_driver_ks.c:83:9: error: ‘printk’ undeclared (first use in this function); did you mean ‘_printk’?
+   83 |         printk(KERN_INFO "Simple IOCTL driver loaded with major number %d\n", MAJOR(dev_num);
+      |         ^~~~~~
+      |         _printk
+/home/azureuser/Linux_Kernel_Driver/4_ioctl_char/ioctl_char_driver_ks.c:83:15: error: expected ‘;’ at end of input
+   83 |         printk(KERN_INFO "Simple IOCTL driver loaded with major number %d\n", MAJOR(dev_num);
+      |               ^
+      |               ;
+......
+/home/azureuser/Linux_Kernel_Driver/4_ioctl_char/ioctl_char_driver_ks.c:83:9: error: expected declaration or statement at end of input
+   83 |         printk(KERN_INFO "Simple IOCTL driver loaded with major number %d\n", MAJOR(dev_num);
+      |         ^~~~~~
+At top level:
+/home/azureuser/Linux_Kernel_Driver/4_ioctl_char/ioctl_char_driver_ks.c:53:19: warning: ‘simple_ioctl_init’ defined but not used [-Wunused-function]
+   53 | static int __init simple_ioctl_init(void)
+      |                   ^~~~~~~~~~~~~~~~~
+/home/azureuser/Linux_Kernel_Driver/4_ioctl_char/ioctl_char_driver_ks.c:14:21: warning: ‘my_chdev’ defined but not used [-Wunused-variable]
+   14 | static struct cdev *my_chdev = NULL;
+      |                     ^~~~~~~~
+make[3]: *** [scripts/Makefile.build:243: /home/azureuser/Linux_Kernel_Driver/4_ioctl_char/ioctl_char_driver_ks.o] Error 1
+make[2]: *** [/usr/src/linux-headers-6.8.0-1027-azure/Makefile:1925: /home/azureuser/Linux_Kernel_Driver/4_ioctl_char] Error 2
+make[1]: *** [Makefile:240: __sub-make] Error 2
+make[1]: Leaving directory '/usr/src/linux-headers-6.8.0-1027-azure'
+make: *** [Makefile:4: all] Error 2

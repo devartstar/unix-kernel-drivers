@@ -1,0 +1,1 @@
+savedcmd_/home/azureuser/Linux_Kernel_Driver/4_ioctl_char/ioctl_char_driver_ks.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/azureuser/Linux_Kernel_Driver/4_ioctl_char/ioctl_char_driver_ks.ko /home/azureuser/Linux_Kernel_Driver/4_ioctl_char/ioctl_char_driver_ks.o /home/azureuser/Linux_Kernel_Driver/4_ioctl_char/ioctl_char_driver_ks.mod.o

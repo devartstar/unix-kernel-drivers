@@ -11,7 +11,7 @@
 int main()
 {
 	int fd = open("/dev/driver0", O_RDWR);
-	printf("Cannot open device: %s\n", strerror(errno));
+
 	if(fd < 0)
 	{
 		printf("Cannot open device\n");
